@@ -20,7 +20,8 @@
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
-        <service android:name=".service.MyService"></service>
+        <service
+            android:exported="true" android:name=".service.MyService"></service>
     </application>
 
 </manifest>

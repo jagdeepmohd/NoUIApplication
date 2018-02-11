@@ -1,6 +1,7 @@
 package com.example.nouiapplication.service;
 
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
@@ -29,11 +30,14 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG,"onStartCommand");
-        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.codetutor.fragmentsdemo");
-        if (launchIntent != null) {
+     //   Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.app.myservice");
+        Intent i=new Intent();
+        i.setComponent(new ComponentName("com.app.myservice", "com.app.myservice.OnlyService"));
+        ComponentName c = this.startService(i);
+       /* if (launchIntent != null) {
             launchIntent.putExtra("data","JAGDEEP");
-            startActivity(launchIntent);//null pointer check in case package name was not found
-        }
+            star(launchIntent);//null pointer check in case package name was not found
+        }*/
         return Service.START_STICKY;
     }
 
